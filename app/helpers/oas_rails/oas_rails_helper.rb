@@ -142,7 +142,7 @@ module OasRails
     }.freeze
 
     def rapidoc_theme(theme_name)
-      THEMES[theme_name] || {}
+      (THEMES[theme_name] || {}).merge(OasRails.config.rapidoc_theme_configuration)
     end
   end
 end

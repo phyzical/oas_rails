@@ -10,14 +10,14 @@
     <script>
       function applyTheme() {
         const docEl = document.querySelector('rapi-doc');
-        const themeAttributes = <%= (THEME_ATTRIBUTES || []).to_json.html_safe %>;
+        const themeAttributes = <%= rapidoc_theme_attributes.to_json.html_safe %>;
 
         // Reset all theme-related attributes
         themeAttributes.forEach(attr => {
           docEl.removeAttribute(attr);
         });
 
-        const themeConfig = <%= (THEMES[OasRails.config.rapidoc_theme] || [] ).to_json.html_safe %>;
+        const themeConfig = <%= rapidoc_theme(OasRails.config.rapidoc_theme).to_json.html_safe %>;
         Object.entries(themeConfig).forEach(([key, value]) => {
             docEl.setAttribute(key, value);
           });

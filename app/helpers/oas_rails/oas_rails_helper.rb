@@ -23,6 +23,10 @@ module OasRails
       nav-hover-bg-color nav-hover-text-color nav-accent-color primary-color
     ].freeze
 
+    def rapidoc_theme_attributes
+      THEME_ATTRIBUTES
+    end
+
     THEMES = {
       'dark' => {
         'theme' => 'dark',
@@ -136,5 +140,9 @@ module OasRails
         'primary-color' => '#D30001'
       }
     }.freeze
+
+    def rapidoc_theme(theme_name)
+      THEMES[theme_name] || {}
+    end
   end
 end
